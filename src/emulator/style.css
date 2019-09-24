@@ -1,0 +1,29 @@
+
+.chrome-container {
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/IPhone_7_Plus_Jet_Black.svg/800px-IPhone_7_Plus_Jet_Black.svg.png');
+    background-repeat: no-repeat;
+    background-size: 414px 736px;
+    height: 750px;
+    width: 450px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frame {
+    background-color: white;
+    position: relative;
+    left: -18px;
+    width: calc(414px - 48px);
+    height: calc(736px - 164px);
+    border: none;
+    border-radius: 5px;
+}
+
+.without-chrome {
+    background: none;
+}
+.without-chrome .frame {
+    box-shadow: 1px 2px 2px 2px lightgrey;
+}
