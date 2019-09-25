@@ -7,11 +7,14 @@ import DeviceEmulator from './emulator';
 
 const App = () => {
   return (
-    <div>
-      <DeviceEmulator>
+    <div className="house">
+      <DeviceEmulator type="mobile">
         <div>Welcome to React Device Emulator</div>
       </DeviceEmulator>
-      <DeviceEmulator url="http://ideosynergy.worksfair.com" />
+      <DeviceEmulator
+        url="http://ideosynergy.worksfair.com"
+        type="tab"
+      />
     </div>
   );
 };
