@@ -23,11 +23,14 @@ class Emulator extends Component {
     children: PropTypes.element,
     withoutChrome: PropTypes.bool,
     type: PropTypes.string,
+    withDeviceSwitch: PropTypes.bool,
+    withRotator: PropTypes.bool,
   }
 
   state = {
     withoutChrome: this.props.withoutChrome,
-    type: this.props.type,
+    type: this.props.type || 'mobile',
+    rotate: false,
   }
 
   buttonProps = [
@@ -44,16 +47,32 @@ class Emulator extends Component {
   ];
 
   setChromeClassName = () => {
-    let { type } = this.state;
-    type = type || 'mobile';
-    return `${type}-chrome ${this.state.withoutChrome && 'without-chrome'}`;
+    const { type, rotate } = this.state;
+    const withoutChromeClass = this.state.withoutChrome ? 'without-chrome' : '';
+    const rotateChromeClass = this.rotateChrome(rotate, type) || '';
+    return `${type}-chrome ${withoutChromeClass} ${rotateChromeClass}`;
   };
 
   setFrameClassName = () => {
     let { type } = this.state;
     type = type || 'mobile';
-    return `${type}-frame`;
+    const rotateFrameClass = this.rotateFrame(type, this.state.rotate) || '';
+    return `${type}-frame ${rotateFrameClass}`;
   };
+
+  rotateChrome = (rotate, type) => {
+    if (rotate) {
+      return this.state.withoutChrome
+        ? `chrome-rotate  ${type}-reposition--without-chrome`
+        : `chrome-rotate  ${type}-reposition`;
+    }
+  }
+
+  rotateFrame = (type, rotate) => {
+    if (rotate) {
+      return `${type}-frame-rotate`;
+    }
+  }
 
   renderFrameComponent = ({ children }) => {
     return (
@@ -87,6 +106,12 @@ class Emulator extends Component {
     });
   }
 
+  handleRotate = () => {
+    this.setState({
+      rotate: !this.state.rotate,
+    });
+  }
+
   renderSwitchButtons = () => {
     return this.buttonProps.map((item) => {
       return (<Button key={item.icon} {...item} />);
@@ -94,15 +119,20 @@ class Emulator extends Component {
   }
 
   renderRotateButton = () => {
-    return (<Button imageClass="rotate" icon={rotateIcon} />);
+    return (<Button
+      imageClass="rotate"
+      icon={rotateIcon}
+      handleClick={this.handleRotate}
+    />);
   }
 
   render() {
+    const { withDeviceSwitch, withRotator } = this.props;
     return (
       <div className="container">
         <div className="button-group">
-          {this.renderSwitchButtons()}
-          {this.renderRotateButton()}
+          {withDeviceSwitch && this.renderSwitchButtons()}
+          {withRotator && this.renderRotateButton()}
         </div>
         {this.renderFrames()}
       </div>

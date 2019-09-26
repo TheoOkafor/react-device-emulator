@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-const Button = ({ imageClass, icon, handleClick }) => {
-  return (
-    <button className="icon-button" >
-      <img src={icon} className={imageClass} onClick={handleClick} />
-    </button>
-  );
-};
+class Button extends Component {
+  handleClickEvent = (event) => {
+    event.preventDefault();
+    this.props.handleClick();
+  };
+
+  render() {
+    const { imageClass, icon } = this.props;
+
+    return (
+      <button className="icon-button" onClick={this.handleClickEvent}>
+        <img src={icon} className={imageClass}/>
+      </button>
+    );
+  }
+}
 
 Button.propTypes = {
   imageClass: PropTypes.string,
