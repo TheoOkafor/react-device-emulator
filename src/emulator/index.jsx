@@ -36,11 +36,13 @@ class Emulator extends Component {
   buttonProps = [
     {
       imageClass: '',
+      name: 'mobile',
       icon: mobileIcon,
       handleClick: () => this.handleSwitch('mobile')
     },
     {
       imageClass: '',
+      name: 'tab',
       icon: tabIcon,
       handleClick: () => this.handleSwitch('tab')
     },
@@ -54,8 +56,7 @@ class Emulator extends Component {
   };
 
   setFrameClassName = () => {
-    let { type } = this.state;
-    type = type || 'mobile';
+    const { type } = this.state;
     const rotateFrameClass = this.rotateFrame(type, this.state.rotate) || '';
     return `${type}-frame ${rotateFrameClass}`;
   };
@@ -63,8 +64,8 @@ class Emulator extends Component {
   rotateChrome = (rotate, type) => {
     if (rotate) {
       return this.state.withoutChrome
-        ? `chrome-rotate  ${type}-reposition--without-chrome`
-        : `chrome-rotate  ${type}-reposition`;
+        ? `chrome-rotate ${type}-reposition--without-chrome`
+        : `chrome-rotate ${type}-reposition`;
     }
   }
 
@@ -114,13 +115,14 @@ class Emulator extends Component {
 
   renderSwitchButtons = () => {
     return this.buttonProps.map((item) => {
-      return (<Button key={item.icon} {...item} />);
+      return (<Button key={item.name} {...item} />);
     });
   }
 
   renderRotateButton = () => {
     return (<Button
       imageClass="rotate"
+      name="rotate"
       icon={rotateIcon}
       handleClick={this.handleRotate}
     />);

@@ -23,7 +23,6 @@
 }
 
 .mobile-frame {
-    background-color: white;
     position: relative;
     top: 70px;
     left: 18px;
@@ -49,7 +48,6 @@
     left: 22px;
     width: 405px;
     height: 480px;
-    background: white;
     border: none;
     border-radius: 5px;
 }

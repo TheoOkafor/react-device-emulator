@@ -16,12 +16,6 @@ const App = () => {
         type="tab"
         withRotator
       />
-      <DeviceEmulator type="mobile" withDeviceSwitch>
-        <div>Welcome to React Device Emulator</div>
-      </DeviceEmulator>
-      <DeviceEmulator type="tab" withoutChrome>
-        <div>Welcome to React Device Emulator</div>
-      </DeviceEmulator>
     </div>
   );
 };
