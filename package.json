@@ -1,6 +1,6 @@
 {
   "name": "react-device-emulator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A device emulator for ReactJS apps",
   "main": "index.js",
   "repository": "https://github.com/TheoOkafor/react-device-emulator.git",
@@ -19,7 +19,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --mode development",
     "build": "webpack --mode production",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "release": "standard-version"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -44,6 +45,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "sass-loader": "^8.0.0",
+    "standard-version": "^7.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
