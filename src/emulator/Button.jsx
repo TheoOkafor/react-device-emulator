@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 
 
 class Button extends Component {
-  handleClickEvent = (event) => {
+  constructor() {
+    super();
+    this.handleClickEvent = this.handleClickEvent.bind(this);
+  }
+
+  handleClickEvent(event) {
     event.preventDefault();
     this.props.handleClick();
-  };
+  }
 
   render() {
     const { imageClass, icon, name } = this.props;

@@ -1,7 +1,3 @@
-.house {
-    width: 600px;
-}
-
 .device-emulator-container {
     display: -webkit-flex;
     display: flex;
@@ -14,7 +10,7 @@
 }
 
 .mobile-chrome {
-    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/IPhone_7_Plus_Jet_Black.svg/800px-IPhone_7_Plus_Jet_Black.svg.png');
+    background: url('/src/assets/IPhone7.png');
     background-repeat: no-repeat;
     background-size: 310px 600px;
     height: 600px;
@@ -33,7 +29,7 @@
 }
 
 .tab-chrome {
-    background: url('https://p7.hiclipart.com/preview/182/601/227/ipad-computer-icons-clip-art-free-download-ipad-png-images.jpg');
+    background: url('/src/assets/ipad.jpg');
     background-repeat: no-repeat;
     background-size: 450px 600px;
     width: 450px;

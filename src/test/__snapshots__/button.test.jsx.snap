@@ -11,7 +11,7 @@ Object {
       >
         <img
           class="has-text-info"
-          src="[object Object]"
+          src="iconic"
         />
       </button>
     </div>
@@ -23,7 +23,7 @@ Object {
     >
       <img
         class="has-text-info"
-        src="[object Object]"
+        src="iconic"
       />
     </button>
   </div>,

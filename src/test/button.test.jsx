@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import Button from '../emulator/Button';
+import Button from '../emulator/button';
 
 describe('Button.jsx', () => {
   const handleClick = jest.fn();
@@ -10,7 +10,7 @@ describe('Button.jsx', () => {
     const component = render(
       <Button
         handleClick={handleClick}
-        icon={{}}
+        icon="iconic"
         imageClass="has-text-info"
         name="button" />
     );
@@ -20,7 +20,7 @@ describe('Button.jsx', () => {
     const component = render(
       <Button
         handleClick={handleClick}
-        icon={{}}
+        icon="iconic"
         imageClass="has-text-info"
         name="button" />
     );
