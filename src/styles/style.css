@@ -10,7 +10,7 @@
 }
 
 .mobile-chrome {
-    background: url('/src/assets/IPhone7.png');
+    background: url('../assets/IPhone7.png');
     background-repeat: no-repeat;
     background-size: 310px 600px;
     height: 600px;
@@ -29,7 +29,7 @@
 }
 
 .tab-chrome {
-    background: url('/src/assets/ipad.jpg');
+    background: url('../assets/ipad.jpg');
     background-repeat: no-repeat;
     background-size: 450px 600px;
     width: 450px;

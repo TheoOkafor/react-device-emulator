@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Frame from 'react-frame-component';
 
-import Button from './button';
+import Button from './Button';
 import tabIcon from '../assets/tablet.svg';
 import mobileIcon from '../assets/mobile.svg';
 import rotateIcon from '../assets/rotate.svg';
@@ -10,9 +10,9 @@ import rotateIcon from '../assets/rotate.svg';
 const initialContent = `
 <!DOCTYPE html>
 <html>
-  <head>${document.head.innerHTML}</head>
+  <head></head>
   <body>
-    <div class="root"></div>
+    <div class="mount"></div>
   </body>
 </html>
 `;

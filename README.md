@@ -15,7 +15,8 @@ A lightweight device emulator for ReactJS web applications. It enables you to vi
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DeviceEmulator from 'react-device-emulator';import 'react-device-emulator/styles/style.css';
+import DeviceEmulator from 'react-device-emulator';
+import 'react-device-emulator/lib/styles/style.css';
 
 const App = () => {
   return (
@@ -33,7 +34,7 @@ ReactDOM.render(<App />, document.querySelector('#root'));
 // Remember to include the css in your file
 
 // Using webpack
-// import styles from 'react-device-emulator/styles/style.css';
+// import styles from 'react-device-emulator/lib/styles/style.css';
 
 // Using html tag:
 // <link rel="stylesheet" href="<NODE_MODULES_FOLDER>/react-device-emulator/styles/style.css" />
