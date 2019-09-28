@@ -10,7 +10,7 @@ describe('Button.jsx', () => {
     const component = render(
       <Button
         handleClick={handleClick}
-        icon={{}}
+        icon="iconic"
         imageClass="has-text-info"
         name="button" />
     );
@@ -20,7 +20,7 @@ describe('Button.jsx', () => {
     const component = render(
       <Button
         handleClick={handleClick}
-        icon={{}}
+        icon="iconic"
         imageClass="has-text-info"
         name="button" />
     );

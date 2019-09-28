@@ -2,20 +2,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './emulator/style.css';
-import DeviceEmulator from './emulator';
+import DeviceEmulator from '../index';
+import '../lib/styles/style.css';
 
 const App = () => {
   return (
-    <div className="house">
-      <DeviceEmulator type="mobile" withDeviceSwitch withRotator>
+    <div>
+      <DeviceEmulator
+        withDeviceSwitch
+        withRotator
+        url="http://www.worksfair.com">
         <div>Welcome to React Device Emulator</div>
       </DeviceEmulator>
-      <DeviceEmulator
-        url="http://ideosynergy.worksfair.com"
-        type="tab"
-        withRotator
-      />
     </div>
   );
 };

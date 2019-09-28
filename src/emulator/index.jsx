@@ -2,66 +2,80 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Frame from 'react-frame-component';
 
-import mobileIcon from '../assets/mobile.svg';
-import tabIcon from '../assets/tablet.svg';
-import rotateIcon from '../assets/rotate.svg';
 import Button from './Button';
+import tabIcon from '../assets/tablet.svg';
+import mobileIcon from '../assets/mobile.svg';
+import rotateIcon from '../assets/rotate.svg';
 
 const initialContent = `
 <!DOCTYPE html>
 <html>
-  <head>${document.head.innerHTML}</head>
+  <head></head>
   <body>
-    <div class="root"></div>
+    <div class="mount"></div>
   </body>
 </html>
 `;
 
+const MOBILE = 'mobile';
+const TAB = 'tab';
+
 class Emulator extends Component {
-  static propTypes = {
-    url: PropTypes.string,
-    children: PropTypes.element,
-    withoutChrome: PropTypes.bool,
-    type: PropTypes.string,
-    withDeviceSwitch: PropTypes.bool,
-    withRotator: PropTypes.bool,
+  constructor(props) {
+    super(props);
+    this.renderIFrame = this.renderIFrame.bind(this);
+    this.renderFrames = this.renderFrames.bind(this);
+    this.handleSwitch = this.handleSwitch.bind(this);
+    this.handleRotate = this.handleRotate.bind(this);
+    this.rotateChrome = this.rotateChrome.bind(this);
+    this.setFrameClassName = this.setFrameClassName.bind(this);
+    this.setChromeClassName = this.setChromeClassName.bind(this);
+    this.renderRotateButton = this.renderRotateButton.bind(this);
+    this.renderSwitchButtons = this.renderSwitchButtons.bind(this);
+    this.renderFrameComponent = this.renderFrameComponent.bind(this);
+
+    this.state = {
+      withoutChrome: this.props.withoutChrome,
+      type: this.checkType(this.props.type) || MOBILE,
+      rotate: false,
+    };
+
+    this.buttonProps = [
+      {
+        imageClass: '',
+        name: MOBILE,
+        icon: mobileIcon,
+        handleClick: () => this.handleSwitch(MOBILE)
+      },
+      {
+        imageClass: '',
+        name: TAB,
+        icon: tabIcon,
+        handleClick: () => this.handleSwitch(TAB)
+      },
+    ];
   }
 
-  state = {
-    withoutChrome: this.props.withoutChrome,
-    type: this.props.type || 'mobile',
-    rotate: false,
-  }
-
-  buttonProps = [
-    {
-      imageClass: '',
-      name: 'mobile',
-      icon: mobileIcon,
-      handleClick: () => this.handleSwitch('mobile')
-    },
-    {
-      imageClass: '',
-      name: 'tab',
-      icon: tabIcon,
-      handleClick: () => this.handleSwitch('tab')
-    },
-  ];
-
-  setChromeClassName = () => {
+  setChromeClassName() {
     const { type, rotate } = this.state;
     const withoutChromeClass = this.state.withoutChrome ? 'without-chrome' : '';
     const rotateChromeClass = this.rotateChrome(rotate, type) || '';
     return `${type}-chrome ${withoutChromeClass} ${rotateChromeClass}`;
-  };
+  }
 
-  setFrameClassName = () => {
+  setFrameClassName() {
     const { type } = this.state;
     const rotateFrameClass = this.rotateFrame(type, this.state.rotate) || '';
     return `${type}-frame ${rotateFrameClass}`;
-  };
+  }
 
-  rotateChrome = (rotate, type) => {
+  checkType(type) {
+    if (type === MOBILE || type === TAB) {
+      return type;
+    }
+  }
+
+  rotateChrome(rotate, type) {
     if (rotate) {
       return this.state.withoutChrome
         ? `chrome-rotate ${type}-reposition--without-chrome`
@@ -69,13 +83,13 @@ class Emulator extends Component {
     }
   }
 
-  rotateFrame = (type, rotate) => {
+  rotateFrame(type, rotate) {
     if (rotate) {
       return `${type}-frame-rotate`;
     }
   }
 
-  renderFrameComponent = ({ children }) => {
+  renderFrameComponent({ children }) {
     return (
       <div className={this.setChromeClassName()}>
         <Frame
@@ -87,7 +101,7 @@ class Emulator extends Component {
     );
   }
 
-  renderIFrame = ({ url }) => {
+  renderIFrame({ url }) {
     return (
       <div className={this.setChromeClassName()}>
         <iframe src={url} className={`frame ${this.setFrameClassName()}`} />
@@ -95,31 +109,31 @@ class Emulator extends Component {
     );
   }
 
-  renderFrames = () => {
+  renderFrames() {
     return !this.props.url
       ? this.renderFrameComponent(this.props)
       : this.renderIFrame(this.props);
   }
 
-  handleSwitch = (type) => {
+  handleSwitch(type) {
     this.setState({
       type,
     });
   }
 
-  handleRotate = () => {
+  handleRotate() {
     this.setState({
       rotate: !this.state.rotate,
     });
   }
 
-  renderSwitchButtons = () => {
+  renderSwitchButtons() {
     return this.buttonProps.map((item) => {
       return (<Button key={item.name} {...item} />);
     });
   }
 
-  renderRotateButton = () => {
+  renderRotateButton() {
     return (<Button
       imageClass="rotate"
       name="rotate"
@@ -131,7 +145,7 @@ class Emulator extends Component {
   render() {
     const { withDeviceSwitch, withRotator } = this.props;
     return (
-      <div className="container">
+      <div className="device-emulator-container">
         <div className="button-group">
           {withDeviceSwitch && this.renderSwitchButtons()}
           {withRotator && this.renderRotateButton()}
@@ -141,5 +155,14 @@ class Emulator extends Component {
     );
   }
 }
+
+Emulator.propTypes = {
+  url: PropTypes.string,
+  children: PropTypes.element,
+  withoutChrome: PropTypes.bool,
+  type: PropTypes.string,
+  withDeviceSwitch: PropTypes.bool,
+  withRotator: PropTypes.bool,
+};
 
 export default Emulator;

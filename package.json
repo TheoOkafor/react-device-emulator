@@ -1,11 +1,11 @@
 {
   "name": "react-device-emulator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A device emulator for ReactJS apps",
   "main": "index.js",
   "repository": "https://github.com/TheoOkafor/react-device-emulator.git",
   "author": "Theo Okafor <theo.okafor@yahoo.com>",
-  "license": "APACHE",
+  "license": "Apache",
   "private": false,
   "keywords": [
     "react",
@@ -18,10 +18,14 @@
   ],
   "scripts": {
     "start": "webpack-dev-server --hot --mode development",
-    "build": "webpack --mode production",
-    "test": "jest --coverage"
+    "build": "rm -rf lib && babel ./src/emulator -d lib/emulator && yarn copy",
+    "webpack": "webpack --mode production",
+    "copy": "cp -rf src/assets lib && cp -rf src/styles lib",
+    "test": "jest --coverage",
+    "release": "standard-version"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.2",
@@ -29,7 +33,6 @@
     "@testing-library/react": "^9.1.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^3.2.0",
     "eslint": "^6.4.0",
@@ -38,6 +41,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
@@ -45,12 +49,14 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "sass-loader": "^8.0.0",
+    "standard-version": "^7.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
   },
   "dependencies": {
+    "@babel/cli": "^7.6.2",
     "prop-types": "^15.7.2",
     "react-frame-component": "^4.1.1"
   },
