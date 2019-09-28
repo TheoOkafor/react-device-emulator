@@ -2,4 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/TheoOkafor/react-device-emulator/compare/v1.0.1...v1.0.2) (2019-09-28)
+
+
+### Bug Fixes
+
+* **index:** add the index file and fix bugs ([935b88a](https://github.com/TheoOkafor/react-device-emulator/commit/935b88a))
+
 ### [1.0.1](https://github.com/TheoOkafor/react-device-emulator/compare/v1.0.0...v1.0.1) (2019-09-27)
