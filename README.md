@@ -1,6 +1,7 @@
 # React Device Emulator
-A lightweight device emulator for ReactJS web applications. It enables you to visualize websites (using the URL), React components and/or full React apps in mobile and tab devices. 
+A lightweight device emulator for ReactJS web applications. It enables you to visualize websites (using the URL), React components and/or full React apps in mobile and tab devices.
 
+[![npm version](https://badge.fury.io/js/react-device-emulator.svg)](https://badge.fury.io/js/react-device-emulator)
 [![Build Status](https://travis-ci.com/TheoOkafor/react-device-emulator.svg?branch=master)](https://travis-ci.com/TheoOkafor/react-device-emulator)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f5e1e4175ae54c391775/test_coverage)](https://codeclimate.com/github/TheoOkafor/react-device-emulator/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f5e1e4175ae54c391775/maintainability)](https://codeclimate.com/github/TheoOkafor/react-device-emulator/maintainability)
@@ -34,7 +35,7 @@ ReactDOM.render(<App />, document.querySelector('#root'));
 // Remember to include the css in your file
 
 // Using webpack
-// import styles from 'react-device-emulator/lib/styles/style.css';
+// import 'react-device-emulator/lib/styles/style.css';
 
 // Using html tag:
 // <link rel="stylesheet" href="<NODE_MODULES_FOLDER>/react-device-emulator/styles/style.css" />
@@ -73,7 +74,7 @@ NB: When both `url` and `children` are provided, `url` will used and `children` 
 - Open `localhost:8080` on your favorite browser
 
 #### Running tests
-- `npm test`
+- `yarn test`
 
 ### Raising issues
 When raising an issue, please add as much details as possible. Screenshots, video recordings, or anything else that can make it easier to reproduce the bug you are reporting will be appreciated.

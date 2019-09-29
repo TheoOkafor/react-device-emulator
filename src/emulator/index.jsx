@@ -20,62 +20,57 @@ const initialContent = `
 const MOBILE = 'mobile';
 const TAB = 'tab';
 
-class Emulator extends Component {
-  constructor(props) {
-    super(props);
-    this.renderIFrame = this.renderIFrame.bind(this);
-    this.renderFrames = this.renderFrames.bind(this);
-    this.handleSwitch = this.handleSwitch.bind(this);
-    this.handleRotate = this.handleRotate.bind(this);
-    this.rotateChrome = this.rotateChrome.bind(this);
-    this.setFrameClassName = this.setFrameClassName.bind(this);
-    this.setChromeClassName = this.setChromeClassName.bind(this);
-    this.renderRotateButton = this.renderRotateButton.bind(this);
-    this.renderSwitchButtons = this.renderSwitchButtons.bind(this);
-    this.renderFrameComponent = this.renderFrameComponent.bind(this);
-
-    this.state = {
-      withoutChrome: this.props.withoutChrome,
-      type: this.checkType(this.props.type) || MOBILE,
-      rotate: false,
-    };
-
-    this.buttonProps = [
-      {
-        imageClass: '',
-        name: MOBILE,
-        icon: mobileIcon,
-        handleClick: () => this.handleSwitch(MOBILE)
-      },
-      {
-        imageClass: '',
-        name: TAB,
-        icon: tabIcon,
-        handleClick: () => this.handleSwitch(TAB)
-      },
-    ];
+const checkType = (type) => {
+  if (type === MOBILE || type === TAB) {
+    return type;
   }
+};
 
-  setChromeClassName() {
+class Emulator extends Component {
+  static propTypes = {
+    url: PropTypes.string,
+    children: PropTypes.element,
+    withoutChrome: PropTypes.bool,
+    type: PropTypes.string,
+    withDeviceSwitch: PropTypes.bool,
+    withRotator: PropTypes.bool,
+  };
+
+  state = {
+    withoutChrome: this.props.withoutChrome,
+    type: checkType(this.props.type) || MOBILE,
+    rotate: false,
+  };
+
+  buttonProps = [
+    {
+      imageClass: '',
+      name: MOBILE,
+      icon: mobileIcon,
+      handleClick: () => this.handleSwitch(MOBILE)
+    },
+    {
+      imageClass: '',
+      name: TAB,
+      icon: tabIcon,
+      handleClick: () => this.handleSwitch(TAB)
+    },
+  ];
+
+  setChromeClassName = () => {
     const { type, rotate } = this.state;
     const withoutChromeClass = this.state.withoutChrome ? 'without-chrome' : '';
     const rotateChromeClass = this.rotateChrome(rotate, type) || '';
     return `${type}-chrome ${withoutChromeClass} ${rotateChromeClass}`;
   }
 
-  setFrameClassName() {
+  setFrameClassName = () => {
     const { type } = this.state;
     const rotateFrameClass = this.rotateFrame(type, this.state.rotate) || '';
     return `${type}-frame ${rotateFrameClass}`;
   }
 
-  checkType(type) {
-    if (type === MOBILE || type === TAB) {
-      return type;
-    }
-  }
-
-  rotateChrome(rotate, type) {
+  rotateChrome = (rotate, type) => {
     if (rotate) {
       return this.state.withoutChrome
         ? `chrome-rotate ${type}-reposition--without-chrome`
@@ -83,13 +78,13 @@ class Emulator extends Component {
     }
   }
 
-  rotateFrame(type, rotate) {
+  rotateFrame = (type, rotate) => {
     if (rotate) {
       return `${type}-frame-rotate`;
     }
   }
 
-  renderFrameComponent({ children }) {
+  renderFrameComponent = ({ children }) => {
     return (
       <div className={this.setChromeClassName()}>
         <Frame
@@ -101,7 +96,7 @@ class Emulator extends Component {
     );
   }
 
-  renderIFrame({ url }) {
+  renderIFrame = ({ url }) => {
     return (
       <div className={this.setChromeClassName()}>
         <iframe src={url} className={`frame ${this.setFrameClassName()}`} />
@@ -109,31 +104,31 @@ class Emulator extends Component {
     );
   }
 
-  renderFrames() {
+  renderFrames = () => {
     return !this.props.url
       ? this.renderFrameComponent(this.props)
       : this.renderIFrame(this.props);
   }
 
-  handleSwitch(type) {
+  handleSwitch = (type) => {
     this.setState({
       type,
     });
   }
 
-  handleRotate() {
+  handleRotate = () => {
     this.setState({
       rotate: !this.state.rotate,
     });
   }
 
-  renderSwitchButtons() {
+  renderSwitchButtons = () => {
     return this.buttonProps.map((item) => {
       return (<Button key={item.name} {...item} />);
     });
   }
 
-  renderRotateButton() {
+  renderRotateButton = () => {
     return (<Button
       imageClass="rotate"
       name="rotate"
@@ -155,14 +150,5 @@ class Emulator extends Component {
     );
   }
 }
-
-Emulator.propTypes = {
-  url: PropTypes.string,
-  children: PropTypes.element,
-  withoutChrome: PropTypes.bool,
-  type: PropTypes.string,
-  withDeviceSwitch: PropTypes.bool,
-  withRotator: PropTypes.bool,
-};
 
 export default Emulator;
