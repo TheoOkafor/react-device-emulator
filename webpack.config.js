@@ -16,6 +16,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          plugins: ['@babel/plugin-proposal-class-properties'],
+        }
       },
       {
         test: /\.(js|jsx)$/,

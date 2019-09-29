@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 
 
 class Button extends Component {
-  constructor() {
-    super();
-    this.handleClickEvent = this.handleClickEvent.bind(this);
+  static propTypes = {
+    imageClass: PropTypes.string,
+    icon: PropTypes.string,
+    handleClick: PropTypes.func,
+    name: PropTypes.string,
   }
 
-  handleClickEvent(event) {
+  handleClickEvent = (event) => {
     event.preventDefault();
     this.props.handleClick();
   }
@@ -26,12 +28,5 @@ class Button extends Component {
     );
   }
 }
-
-Button.propTypes = {
-  imageClass: PropTypes.string,
-  icon: PropTypes.string,
-  handleClick: PropTypes.func,
-  name: PropTypes.string,
-};
 
 export default Button;
