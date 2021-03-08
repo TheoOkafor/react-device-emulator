@@ -1,6 +1,6 @@
 {
   "name": "react-device-emulator",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A device emulator for ReactJS apps",
   "main": "index.js",
   "repository": "https://github.com/TheoOkafor/react-device-emulator.git",
