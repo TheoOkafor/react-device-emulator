@@ -60,8 +60,9 @@ ReactDOM.render(<App />, document.querySelector('#root'));
 | type            | `string`     | `mobile` | the type of device. It can be `mobile` or `tab` |
 | withDeviceSwitch        | `boolean`     | `false` | show device switches for switching between device types |
 | withRotator            | `boolean`     | `false` | show the rotate button for rotating the device |
-| url            | `string`      | `undefined` | for specifying the url of the website to be displayed in the emulator |
-| children            | `object`      | `undefined` | the children to the emulator component. Typically the app or component you want to show on the emulator |
+| url            | `string`      | `''` | for specifying the url of the website to be displayed in the emulator |
+| isRotated            | `boolean`      | `false` | used to initialize the emulator in a rotated state |
+| children            | `object`      | `null` | the children to the emulator component. Typically the app or component you want to show on the emulator |
 
 NB: When both `url` and `children` are provided, `url` will used and `children` ignored.
 

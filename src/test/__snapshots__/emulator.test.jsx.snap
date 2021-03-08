@@ -176,6 +176,15 @@ Object {
               src="[object Object]"
             />
           </button>
+          <button
+            class="icon-button"
+            data-testid="rotate"
+          >
+            <img
+              class="rotate"
+              src="[object Object]"
+            />
+          </button>
         </div>
         <div
           class="mobile-chrome  "
@@ -209,6 +218,15 @@ Object {
         >
           <img
             class=""
+            src="[object Object]"
+          />
+        </button>
+        <button
+          class="icon-button"
+          data-testid="rotate"
+        >
+          <img
+            class="rotate"
             src="[object Object]"
           />
         </button>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -11,7 +10,9 @@ const App = () => {
       <DeviceEmulator
         withDeviceSwitch
         withRotator
-        url="http://www.worksfair.com">
+        isRotated
+        url="http://www.worksfair.com"
+      >
         <div>Welcome to React Device Emulator</div>
       </DeviceEmulator>
     </div>
