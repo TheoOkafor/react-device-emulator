@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Emulator.jsx Emulator Renders Correctly with chrome and all buttons 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -148,7 +148,7 @@ Object {
 `;
 
 exports[`Emulator.jsx Emulator Renders Correctly with chrome and only switch buttons 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -295,7 +295,7 @@ Object {
 `;
 
 exports[`Emulator.jsx Emulator Renders Correctly without chrome and all buttons 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
@@ -442,7 +442,7 @@ Object {
 `;
 
 exports[`Emulator.jsx Emulator Renders iFrame with url correctly with chrome and only switch buttons 1`] = `
-Object {
+{
   "asFragment": [Function],
   "baseElement": <body>
     <div>
